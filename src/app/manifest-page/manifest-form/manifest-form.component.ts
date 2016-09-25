@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { ManifestItem } from "../manifest-item";
+import { ManifestDataService } from "../manifest-data.service";
 
 @Component({
   selector: 'spcc-manifest-form',
@@ -7,7 +8,6 @@ import { ManifestItem } from "../manifest-item";
   styleUrls: ['./manifest-form.component.css']
 })
 export class ManifestFormComponent implements OnInit {
-
 
   public model = {
       dateReceived: '-',
@@ -17,16 +17,29 @@ export class ManifestFormComponent implements OnInit {
       expiry: '-'
   };
 
-  constructor() {
-
- }
+  constructor( private dataService : ManifestDataService ) {
+  }
 
   ngOnInit() {
   }
 
   postItem( event ) {
 
-      console.log( JSON.stringify( this.model ) );
       event.preventDefault();
+
+      this.dataService.pushItem( new ManifestItem( this.model ) ).subscribe(
+          ( data => {this.resetModel(); }),
+          ( err => console.log( err ) )
+      );
+  }
+
+  private resetModel() {
+      this.model = {
+          dateReceived: '-',
+          commodityName: '-',
+          unitPrice: 0,
+          tonnage: 0,
+          expiry: '-'
+      };
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ManifestDataService } from "./manifest-data.service";
 
 @Component({
   selector: 'spcc-manifest-page',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManifestPageComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor() {}
 
   ngOnInit() {
   }

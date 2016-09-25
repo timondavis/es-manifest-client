@@ -9,8 +9,6 @@ export class ManifestItem {
 
     public constructor( args ) {
 
-      console.log( args );
-
       try {
         this.dateReceived = args.dateReceived;
         this.commodityName  = args.commodityName;

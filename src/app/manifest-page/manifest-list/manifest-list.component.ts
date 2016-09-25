@@ -11,7 +11,15 @@ export class ManifestListComponent implements OnInit {
 
   public manifestListItems : ManifestItem[];
 
-  constructor( private listItemService : ManifestDataService ) { };
+  constructor( private listItemService : ManifestDataService ) {
+
+    this.listItemService.pushItemEmitter.subscribe(
+
+        items => this.loadItems(), //this.manifestListItems = items,
+        err => console.log( err )
+    )
+
+  };
 
   ngOnInit() {
 
@@ -21,22 +29,13 @@ export class ManifestListComponent implements OnInit {
   private loadItems() {
 
     this.listItemService.getItems().subscribe(
-        items => this.hydrateItems( items ),// this.manifestListItems = items,
+
+        items => this.manifestListItems = items,
         err => console.log( err )
     );
   }
 
-  private hydrateItems( items ) : void {
 
-    var itemsArray : ManifestItem[] = [];
-
-    for( var i = 0 ; i < items.length ; i++ ) {
-
-      itemsArray[i] = new ManifestItem( items[i] );
-    }
-
-    this.manifestListItems = itemsArray;
-  }
 
 
 }
