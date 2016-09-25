@@ -21,12 +21,12 @@ import { ManifestDataService } from './manifest-page/manifest-data.service';
     ManifestPageComponent,
     ManifestListComponent,
     ManifestListItemComponent,
-    ManifestFormComponent
+    ManifestFormComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
   providers: [ ManifestDataService ],
   bootstrap: [AppComponent]

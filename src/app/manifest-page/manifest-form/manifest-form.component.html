@@ -1,15 +1,37 @@
-<div class="row pull-left">
+<form (submit)="postItem($event)" class="form-horizontal" role="form" >
 
-    <div class="input-group col-md-4">
-        <span class="input-group-addon">Date Received</span>
-        <input type="text" class="form-control" placeholder="9/15">
+    <div class="form-group form-inline">
+        <div class="col-md-4">
+            <label class="control-label" for="received-date">Received Date</label>
+            <input type="text" class="form-control" id="received-date" #dateReceived placeholder="9/15" [(ngModel)]="model.dateReceived" name="dateReceived" >
+        </div>
+        <div class="col-md-8">
+            <label class="control-label" for="commodity-name">Commodity Name</label>
+            <input type="text" class="form-control" id="commodity-name" #commodityName placeholder="Food" name="commodityName" [(ngModel)]="model.commodityName" >
+        </div>
+
     </div>
 
-    <div class="input-group col-md-6" >
-        <span class="input-group-addon">Commodity</span>
-        <input type="text" class="form-control" placeholder="Food">
+    <div class="form-group form-inline">
+        <div class="col-md-4">
+            <label class="control-label" for="unit-price">Unit Price</label>
+            <input type="text" class="form-control" id="unit-price" #unitPrice Placeholder="5" [(ngModel)]="model.unitPrice" name="unitPrice" >
+        </div>
+        <div class="col-md-4">
+            <label class="control-label" for="tonnage">Tonnage</label>
+            <input type="text" class="form-control" #tonnage id="tonnage" placeholder="5" [(ngModel)]="model.tonnage" name="tonnage">
+        </div>
+        <div class="col-md-4">
+            <label class="control-label" for="expiration-date">Expiration Date</label>
+            <input type="text" class="form-control" #expirationDate id="expiration-date" [(ngModel)]="model.expiry" name="expiry">
+        </div>
     </div>
 
-</div>
+    <div class="form-group">
+        <button type="submit" class="pull-right btn btn-default">Submit</button>
+    </div>
+
+
+</form>
 
 
