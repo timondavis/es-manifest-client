@@ -1,16 +1,27 @@
 export class ManifestItem {
 
     protected value : number = 0;
+    protected dateReceived : string;
+    protected commodityName : string;
+    protected unitPrice : number;
+    protected tonnage : number;
+    protected expiry : string = '-';
 
-    public constructor(
-       protected dateReceived : string,
-       protected commodityName : string,
-       protected unitPrice : number,
-       protected tonnage : number,
-       protected expiry : string = ''
-    ) {
+    public constructor( args ) {
 
-       this.value = unitPrice * tonnage;
+      console.log( args );
+
+      try {
+        this.dateReceived = args.dateReceived;
+        this.commodityName  = args.commodityName;
+        this.unitPrice = args.unitPrice;
+        this.tonnage = args.tonnage;
+        this.expiry = args.expiry;
+        this.value = this.unitPrice * this.tonnage;
+      }
+      catch ( e ) {
+          throw e;
+      }
     }
 
     /**
@@ -85,7 +96,7 @@ export class ManifestItem {
      * @param value
      */
     public updateUnitPrice( value : number ) {
-        this.unitPrice = number;
+        this.unitPrice = value;
     }
 
     /**

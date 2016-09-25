@@ -11,6 +11,8 @@ import { ManifestListComponent } from './manifest-page/manifest-list/manifest-li
 import { ManifestListItemComponent } from './manifest-page/manifest-list/manifest-list-item.component';
 import { ManifestFormComponent } from './manifest-page/manifest-form/manifest-form.component';
 
+import { ManifestDataService } from './manifest-page/manifest-data.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,7 @@ import { ManifestFormComponent } from './manifest-page/manifest-form/manifest-fo
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ ManifestDataService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

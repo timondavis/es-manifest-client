@@ -12,9 +12,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr spcc-manifest-list-item></tr>
-            <tr spcc-manifest-list-item></tr>
-            <tr spcc-manifest-list-item></tr>
+            <tr *ngFor="let item of manifestListItems" [manifestItem]="item" spcc-manifest-list-item></tr>
         </tbody>
     </table>
 </div>

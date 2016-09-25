@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ManifestItem } from '../manifest-item';
 
 @Component({
   selector: '[spcc-manifest-list-item]',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManifestListItemComponent implements OnInit {
 
+  @Input() manifestItem : ManifestItem;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public getManifestItem() {
+    return this.manifestItem;
   }
 
 }
