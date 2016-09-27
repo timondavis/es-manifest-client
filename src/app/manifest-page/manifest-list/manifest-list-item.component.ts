@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit } from '@angular/core';
 import { ManifestItem } from '../manifest-item';
 import { ManifestDataService } from "../manifest-data.service";
 
@@ -10,7 +10,6 @@ import { ManifestDataService } from "../manifest-data.service";
 export class ManifestListItemComponent implements OnInit {
 
   @Input() manifestItem : ManifestItem;
-  @Input() isVisible : boolean = true;
 
   constructor( private manifestDataService : ManifestDataService ) { }
 
