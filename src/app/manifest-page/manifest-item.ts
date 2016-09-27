@@ -11,7 +11,7 @@ export class ManifestItem {
     public constructor( args ) {
 
       try {
-        this._id = args.id;
+        this._id = args._id;
         this.dateReceived = args.dateReceived;
         this.commodityName  = args.commodityName;
         this.unitPrice = args.unitPrice;
@@ -22,6 +22,14 @@ export class ManifestItem {
       catch ( e ) {
           throw e;
       }
+    }
+
+    /**
+     * Get the ID for this record.
+     */
+    public getID() {
+
+        return this._id;
     }
 
     /**

@@ -9,17 +9,17 @@ export class ManifestDataService {
 
   private getResult : any[];
 
-  private getAllUrl = 'http://localhost:3000/manifest/all';
-  private postItemUrl = 'http://localhost:3000/manifest/create-item';
+  private itemURL = 'http://localhost:3000/manifest';
 
   @Output() getItemsEmitter : EventEmitter<ManifestItem[]> = new EventEmitter<ManifestItem[]>();
   @Output() pushItemEmitter : EventEmitter<ManifestItem> = new EventEmitter<ManifestItem>();
+  @Output() deleteItemEmitter : EventEmitter<Object> = new EventEmitter<Object>();
 
   constructor( private http : Http ) { }
 
   getItems() : Observable<ManifestItem[]> {
 
-    return this.http.get( this.getAllUrl )
+    return this.http.get( this.itemURL )
       .map( ( res: Response ) => this.handleGetItems( res ) )
       .catch( ( error: any ) => Observable.throw( error || 'Server Error' ) );
   }
@@ -30,9 +30,25 @@ export class ManifestDataService {
     let headers = new Headers( { 'Content-Type': 'application/json' } );
     let options = new RequestOptions( { headers: headers } );
 
-    return this.http.post( this.postItemUrl, body, options )
+    return this.http.post( this.itemURL, body, options )
       .map( ( res : Response ) => this.handlePushItem( res ) )
       .catch( ( err ) => Observable.throw( err ) );
+  }
+
+  deleteItem( item : ManifestItem ) : Observable<Object> {
+
+    let url = this.itemURL + '/' + item.getID();
+
+    return this.http.delete( url )
+        .map( ( res : Response ) => this.handleDeleteItem( res ) )
+        .catch( ( error: any ) => Observable.throw( error || 'Server Error ' ) );
+  }
+
+  private handleDeleteItem( response ) {
+
+    let adjustedResponse = response.json();
+    this.deleteItemEmitter.emit( adjustedResponse );
+    return adjustedResponse;
   }
 
 

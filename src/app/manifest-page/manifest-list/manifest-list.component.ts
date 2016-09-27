@@ -17,7 +17,13 @@ export class ManifestListComponent implements OnInit {
 
         items => this.loadItems(), //this.manifestListItems = items,
         err => console.log( err )
-    )
+    );
+
+    this.listItemService.deleteItemEmitter.subscribe(
+
+        items => this.loadItems(),
+        err => console.log( err )
+    );
 
   };
 
