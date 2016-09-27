@@ -12,6 +12,8 @@ import { ManifestListItemComponent } from './manifest-page/manifest-list/manifes
 import { ManifestFormComponent } from './manifest-page/manifest-form/manifest-form.component';
 
 import { ManifestDataService } from './manifest-page/manifest-data.service';
+import { DeleteButtonDirective } from './shared/delete-button.directive';
+import { DeleteItemDirective } from './shared/delete-item.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ManifestDataService } from './manifest-page/manifest-data.service';
     ManifestListComponent,
     ManifestListItemComponent,
     ManifestFormComponent,
+    DeleteButtonDirective,
+    DeleteItemDirective
   ],
   imports: [
     BrowserModule,

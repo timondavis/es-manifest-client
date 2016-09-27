@@ -9,6 +9,7 @@ import { ManifestItem } from '../manifest-item';
 export class ManifestListItemComponent implements OnInit {
 
   @Input() manifestItem : ManifestItem;
+  @Input() isVisible : boolean = true;
 
   constructor() { }
 
@@ -17,6 +18,12 @@ export class ManifestListItemComponent implements OnInit {
 
   public getManifestItem() {
     return this.manifestItem;
+  }
+
+  public handleDeleted( event ) {
+
+    console.log( "Handling Deleted" );
+    this.isVisible = false;
   }
 
 }
