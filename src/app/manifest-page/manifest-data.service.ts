@@ -14,6 +14,7 @@ export class ManifestDataService {
   @Output() getItemsEmitter : EventEmitter<ManifestItem[]> = new EventEmitter<ManifestItem[]>();
   @Output() pushItemEmitter : EventEmitter<ManifestItem> = new EventEmitter<ManifestItem>();
   @Output() deleteItemEmitter : EventEmitter<Object> = new EventEmitter<Object>();
+  @Output() itemSelectedEmitter : EventEmitter<ManifestItem> = new EventEmitter<ManifestItem>();
 
   constructor( private http : Http ) { }
 
@@ -22,6 +23,11 @@ export class ManifestDataService {
     return this.http.get( this.itemURL )
       .map( ( res: Response ) => this.handleGetItems( res ) )
       .catch( ( error: any ) => Observable.throw( error || 'Server Error' ) );
+  }
+
+  triggerItemSelected( item : ManifestItem ) : void {
+
+    this.itemSelectedEmitter.emit( item );
   }
 
   pushItem( item : ManifestItem ) : Observable<ManifestItem[]> {

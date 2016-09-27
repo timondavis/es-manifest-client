@@ -1,5 +1,6 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, ElementRef } from '@angular/core';
 import { ViewChild } from "@angular/core/src/metadata/di";
+import { TransactionCalculatorService } from "./transaction-calculator.service";
 
 @Component({
   selector: 'spcc-transaction-calculator',
@@ -8,11 +9,11 @@ import { ViewChild } from "@angular/core/src/metadata/di";
 })
 export class TransactionCalculatorComponent implements OnInit {
 
-  constructor() { }
+  constructor( private transactionCalculatorService : TransactionCalculatorService ) { }
+
 
   @ViewChild( 'purchasedUnits' ) purchasedUnitsRef : ElementRef;
   @ViewChild( 'purchasedPrice' ) purchasedPriceRef : ElementRef;
-  @ViewChild( 'sellUnits' ) sellUnitsRef : ElementRef;
   @ViewChild( 'sellPrice' ) sellPriceRef : ElementRef;
   @ViewChild( 'profitPercentage' ) profitPercentageRef : ElementRef;
   @ViewChild( 'profitMoney' )  profitMoneyRef : ElementRef;
@@ -77,7 +78,19 @@ export class TransactionCalculatorComponent implements OnInit {
     return returnString;
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngAfterContentChecked() {
+
+    let that = this;
+
+    this.transactionCalculatorService.manifestItemSelected.subscribe(
+        function( item ) {
+          that.purchasedUnitsRef.nativeElement.value = item.getTonnage();
+          that.purchasedPriceRef.nativeElement.value = item.getUnitPrice();
+        },
+        ( err ) => console.log( err )
+    );
   }
 
 }

@@ -27,6 +27,11 @@ export class ManifestListComponent implements OnInit {
 
   };
 
+  public onItemClick( item : ManifestItem ) {
+
+    this.listItemService.triggerItemSelected( item );
+  }
+
   ngOnInit() {
 
     this.loadItems();
@@ -40,6 +45,7 @@ export class ManifestListComponent implements OnInit {
         err => console.log( err )
     );
   }
+
 
 
 

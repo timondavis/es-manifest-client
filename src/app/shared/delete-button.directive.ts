@@ -15,6 +15,7 @@ export class DeleteButtonDirective {
   @HostListener( 'click' ) doClick(){
 
     this.onclick();
+    event.stopPropagation();
   }
 
   @Output( 'delete' ) deleted : EventEmitter<boolean>;

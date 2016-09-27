@@ -24,10 +24,11 @@ export class ManifestListItemComponent implements OnInit {
 
     console.log( "Handling Deleted" );
 
-  this.manifestDataService.deleteItem( this.manifestItem ).subscribe(
+    this.manifestDataService.deleteItem( this.manifestItem ).subscribe(
       ( data ) => data,
       ( err ) => console.log( err )
     );
   }
+
 
 }
