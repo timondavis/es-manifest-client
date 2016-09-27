@@ -12,8 +12,12 @@ import { ManifestListItemComponent } from './manifest-page/manifest-list/manifes
 import { ManifestFormComponent } from './manifest-page/manifest-form/manifest-form.component';
 
 import { ManifestDataService } from './manifest-page/manifest-data.service';
+import { TransactionCalculatorService } from './transaction-calculator/transaction-calculator.service';
+
 import { DeleteButtonDirective } from './shared/delete-button.directive';
 import { DeleteItemDirective } from './shared/delete-item.directive';
+import { TransactionCalculatorComponent } from './transaction-calculator/transaction-calculator.component';
+
 
 @NgModule({
   declarations: [
@@ -25,14 +29,15 @@ import { DeleteItemDirective } from './shared/delete-item.directive';
     ManifestListItemComponent,
     ManifestFormComponent,
     DeleteButtonDirective,
-    DeleteItemDirective
+    DeleteItemDirective,
+    TransactionCalculatorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
   ],
-  providers: [ ManifestDataService ],
+  providers: [ ManifestDataService, TransactionCalculatorService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
