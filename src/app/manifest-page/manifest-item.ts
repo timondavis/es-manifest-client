@@ -1,5 +1,6 @@
 export class ManifestItem {
 
+    protected _id : string;
     protected value : number = 0;
     protected dateReceived : string;
     protected commodityName : string;
@@ -10,6 +11,7 @@ export class ManifestItem {
     public constructor( args ) {
 
       try {
+        this._id = args._id;
         this.dateReceived = args.dateReceived;
         this.commodityName  = args.commodityName;
         this.unitPrice = args.unitPrice;
@@ -20,6 +22,14 @@ export class ManifestItem {
       catch ( e ) {
           throw e;
       }
+    }
+
+    /**
+     * Get the ID for this record.
+     */
+    public getID() {
+
+        return this._id;
     }
 
     /**
