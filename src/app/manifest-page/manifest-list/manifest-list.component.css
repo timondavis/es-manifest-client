@@ -1,2 +1,4 @@
-.table tbody {
+.panel {
+
+    overflow-x: scroll;
 }
