@@ -18,6 +18,9 @@ import { DeleteButtonDirective } from './shared/delete-button.directive';
 import { DeleteItemDirective } from './shared/delete-item.directive';
 import { TransactionCalculatorComponent } from './transaction-calculator/transaction-calculator.component';
 
+import { routing } from './app.routing';
+import { MarketPageComponent } from './market-page/market-page.component';
+
 
 @NgModule({
   declarations: [
@@ -30,12 +33,14 @@ import { TransactionCalculatorComponent } from './transaction-calculator/transac
     ManifestFormComponent,
     DeleteButtonDirective,
     DeleteItemDirective,
-    TransactionCalculatorComponent
+    TransactionCalculatorComponent,
+    MarketPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    routing
   ],
   providers: [ ManifestDataService, TransactionCalculatorService ],
   bootstrap: [AppComponent]
