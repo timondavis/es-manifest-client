@@ -1,0 +1,49 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Transaction Calculator</div>
+        <form (submit)="onsubmit( $event )" role="form" >
+
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <label for="purchased-units" class="control-label" >Units</label>
+                    <input type="text" class="form-control" id="purchased-units" #purchasedUnits placeholder="0">
+                </div>
+                <div class="col-sm-6">
+                    <label for="purchased-price" class="control-label" >Purchased at $</label>
+                    <input type="text" class="form-control" id="purchased-price" #purchasedPrice placeholder="0">
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-sm-6 col-sm-offset-6">
+                    <label for="sell-price" class="control-label" >Sell at $</label>
+                    <input type="text" class="form-control" id="sell-price" #sellPrice placeholder="0">
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="profit-percentage" class="control-label" >Profit %</label>
+                    <input type="text" class="form-control" id="profit-percentage" disabled #profitPercentage placeholder="0">
+                </div>
+                <div class="col-sm-6">
+                    <label for="profit-money" class="control-label" >Profit $</label>
+                    <input type="text" class="form-control" id="profit-money" disabled #profitMoney placeholder="0">
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="row pull-right">
+                <button type="submit" class="btn btn-primary">Calculate</button>
+            </div>
+
+        </form>
+</div>
