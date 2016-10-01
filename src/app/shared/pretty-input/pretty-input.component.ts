@@ -1,26 +1,65 @@
-import { Component, Input, EventEmitter, OnInit } from '@angular/core';
-import { Output } from "@angular/core/src/metadata/directives";
+import { Component, Input, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { NgModel } from '@angular/forms';
+
+const noop = () => {};
+
+export const PRETTY_INPUT_COMPONENT_VALUE_ACCESSOR : any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => PrettyInputComponent ),
+  multi: true
+};
 
 @Component({
   selector: 'spcc-pretty-input',
   templateUrl: './pretty-input.component.html',
-  styleUrls: ['./pretty-input.component.css']
+  styleUrls: ['./pretty-input.component.css'],
+  providers: [PRETTY_INPUT_COMPONENT_VALUE_ACCESSOR]
 })
-export class PrettyInputComponent implements OnInit {
+export class PrettyInputComponent implements ControlValueAccessor {
 
-  @Input() fieldID : string;
-  @Input() fieldLabel : string;
-  @Input() fieldValue : string;
+  @Input() label : string;
+  @Input() name : string;
+
+  private innerValue: any = '';
+
+  private onTouchedCallback: () => void = noop;
+  private onChangedCallback: ( _ : any ) => void = noop;
 
   constructor() { }
 
-  ngOnInit() {
+  get value() : any {
 
+    return this.innerValue;
   }
 
-  handlekeydown( event ) {
+  set value( v : any ) {
 
-      this.fieldValue = event.target.value;
+    if ( v !== this.innerValue ) {
+      this.innerValue = v;
+      this.onChangedCallback( v );
+    }
   }
 
+  onBlur() {
+
+    this.onTouchedCallback();
+  }
+
+  writeValue( value: any ) {
+
+    if ( value !== this.innerValue ) {
+      this.innerValue = value;
+    }
+  }
+
+  // From ControlValueAccessor interface
+  registerOnChange( fn: any ) {
+    this.onChangedCallback = fn;
+  }
+
+  // From ControlValueAccessor interface
+  registerOnTouched( fn : any ) {
+   this.onTouchedCallback = fn;
+  }
 }

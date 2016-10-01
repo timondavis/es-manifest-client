@@ -1,7 +1,6 @@
 <div class="form-group row">
-  <label [attr.for]="fieldID" class="col-xs-2">{{fieldLabel}}</label>
+  <label [attr.for]="name" class="col-xs-2">{{label}}</label>
   <div class="col-xs-10">
-    <input type="text" #inputField class="form-control" [id]="fieldID" [value]="fieldValue" (keydown)="handlekeydown($event)">
-
+    <input type="text" class="form-control" [id]="name" [name]="name" [(ngModel)]="value" (blur)="onBlur($event)">
   </div>
 </div>

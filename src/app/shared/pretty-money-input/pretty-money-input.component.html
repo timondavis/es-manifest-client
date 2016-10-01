@@ -1,3 +1,9 @@
-<p>
-  pretty-money-input works!
-</p>
+<div class="form-group row">
+  <label [attr.for]="name" class="col-xs-2">{{label}}</label>
+  <div class="col-xs-10">
+    <div class="input-group">
+      <span class="input-group-addon">$</span>
+      <input type="text" class="form-control" [name]="name" [id]="name" [(ngModel)]="value" (blur)="onblur($event)">
+    </div>
+  </div>
+</div>

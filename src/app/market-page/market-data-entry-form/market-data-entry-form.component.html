@@ -2,49 +2,13 @@
    <div class="panel-heading">Create Market Data Point</div>
 
    <div class="panel-body">
-       <form (submit)="postItem(
-       {
-         date        : landingDate.value,
-         planet      : landingPlanet.value,
-         region      : planetAllegiance.value,
-         commodities : [
-            { name : 'food', cost: foodCommodity.value },
-            { name : 'clothing', cost: clothingCommodity.value },
-            { name : 'metal', cost: metalCommodity.value },
-            { name : 'plastic', cost: plasticCommodity.value },
-            { name : 'equipment', cost: equipmentCommodity.value },
-            { name : 'medical', cost: medicalCommodity.value },
-            { name : 'industrial', cost: industrialCommodity.value },
-            { name : 'electronics', cost: electronicsCommodity.value },
-            { name : 'heavyMetals', cost: heavyMetalsCommodity.value },
-            { name : 'luxuryGoods', cost: luxuryGoodsCommodity.value}
-         ]
-       })" role="form">
+       <form (submit)="postItem()" role="form">
 
            <h3>Graph Data</h3>
 
-           <spcc-pretty-input #howsYourBacon [fieldID]="'hows-your-bacon'" [fieldLabel]="'How\'s yer bacon!?'" (keydown)="handlekeydown($event)" [fieldValue]="'fan-damn-tastic'"></spcc-pretty-input>
-
-           <div class="form-group row">
-               <label for="spcc-landing-date" class="col-xs-2">Landing Date</label>
-               <div class="col-xs-10">
-                 <input type="text" #landingDate class="form-control" id="spcc-landing-date">
-               </div>
-           </div>
-
-           <div class="form-group row">
-               <label for="spcc-landing-planet" class="col-xs-2">Landing Planet</label>
-               <div class="col-xs-10">
-                <input type="text" #landingPlanet class="form-control" id="spcc-landing-planet">
-               </div>
-           </div>
-
-           <div class="form-group row">
-               <label for="spcc-planet-allegiance" class="col-xs-2" >Planetary Allegiance</label>
-               <div class="col-xs-10">
-                 <input type="text" #planetAllegiance class="form-control" id="spcc-planet-allegiance">
-               </div>
-           </div>
+           <spcc-pretty-input [name]="'spcc-landing-date'" [label]="'Landing Date'" [(ngModel)]="model.date"></spcc-pretty-input>
+           <spcc-pretty-input [name]="'spcc-landing-planet'" [label]="'Planet'" [(ngModel)]="model.planet"></spcc-pretty-input>
+           <spcc-pretty-input [name]="'spcc-planet-allegiance'" [label]="'Allegiance'" [(ngModel)]="model.region"></spcc-pretty-input>
 
            <h3>Commodity Pricing</h3>
 
