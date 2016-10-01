@@ -1,0 +1,153 @@
+<div class="panel panel-default">
+   <div class="panel-heading">Create Market Data Point</div>
+
+   <div class="panel-body">
+       <form (submit)="postItem(
+       {
+         date        : landingDate.value,
+         planet      : landingPlanet.value,
+         region      : planetAllegiance.value,
+         commodities : [
+            { name : 'food', cost: foodCommodity.value },
+            { name : 'clothing', cost: clothingCommodity.value },
+            { name : 'metal', cost: metalCommodity.value },
+            { name : 'plastic', cost: plasticCommodity.value },
+            { name : 'equipment', cost: equipmentCommodity.value },
+            { name : 'medical', cost: medicalCommodity.value },
+            { name : 'industrial', cost: industrialCommodity.value },
+            { name : 'electronics', cost: electronicsCommodity.value },
+            { name : 'heavyMetals', cost: heavyMetalsCommodity.value },
+            { name : 'luxuryGoods', cost: luxuryGoodsCommodity.value}
+         ]
+       })" role="form">
+
+           <h3>Graph Data</h3>
+
+           <spcc-pretty-input #howsYourBacon [fieldID]="'hows-your-bacon'" [fieldLabel]="'How\'s yer bacon!?'" (keydown)="handlekeydown($event)" [fieldValue]="'fan-damn-tastic'"></spcc-pretty-input>
+
+           <div class="form-group row">
+               <label for="spcc-landing-date" class="col-xs-2">Landing Date</label>
+               <div class="col-xs-10">
+                 <input type="text" #landingDate class="form-control" id="spcc-landing-date">
+               </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="spcc-landing-planet" class="col-xs-2">Landing Planet</label>
+               <div class="col-xs-10">
+                <input type="text" #landingPlanet class="form-control" id="spcc-landing-planet">
+               </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="spcc-planet-allegiance" class="col-xs-2" >Planetary Allegiance</label>
+               <div class="col-xs-10">
+                 <input type="text" #planetAllegiance class="form-control" id="spcc-planet-allegiance">
+               </div>
+           </div>
+
+           <h3>Commodity Pricing</h3>
+
+           <div class="form-group row">
+               <label for="spcc-food-commodity" class="col-xs-2">Food</label>
+               <div class="col-xs-10">
+                   <div class="input-group">
+                       <span class="input-group-addon">$</span>
+                       <input type="text" #foodCommodity class="form-control" id="spcc-food-commodity">
+                   </div>
+               </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="spcc-clothing-commodity" class="col-xs-2">Clothing</label>
+               <div class="col-xs-10">
+                   <div class="input-group">
+                       <span class="input-group-addon">$</span>
+                       <input type="text" #clothingCommodity class="form-control" id="spcc-clothing-commodity">
+                   </div>
+               </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="spcc-metal-commodity" class="col-xs-2">Metal</label>
+               <div class="col-xs-10">
+                   <div class="input-group">
+                       <span class="input-group-addon">$</span>
+                       <input type="text" #metalCommodity class="form-control" id="spcc-metal-commodity">
+                   </div>
+               </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="spcc-plastic-commodity" class="col-xs-2">Plastic</label>
+               <div class="col-xs-10">
+                   <div class="input-group">
+                       <span class="input-group-addon">$</span>
+                       <input type="text" #plasticCommoodity class="form-control" id="spcc-plastic-commodity">
+                   </div>
+               </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="spcc-equipment-commodity" class="col-xs-2">Equipment</label>
+               <div class="col-xs-10">
+                   <div class="input-group">
+                       <span class="input-group-addon">$</span>
+                       <input type="text" #eqipmentCommodity class="form-control" id="spcc-equipment-commodity">
+                   </div>
+                </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="spcc-medical-commodity" class="col-xs-2">Medical</label>
+               <div class="col-xs-10">
+                  <div class="input-group">
+                     <span class="input-group-addon">$</span>
+                     <input type="text" #medicalCommodity class="form-control" id="spcc-medical-commodity">
+                  </div>
+               </div>
+            </div>
+
+           <div class="form-group row">
+               <label for="spcc-industrial-commodity" class="col-xs-2">Industrial</label>
+               <div class="col-xs-10">
+                   <div class="input-group">
+                       <span class="input-group-addon">$</span>
+                       <input type="text" #industrialCommodity class="form-control" id="spcc-industrial-commodity">
+                   </div>
+                </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="spcc-electronics-commodity" class="col-xs-2">Electronics</label>
+               <div class="col-xs-10">
+                   <div class="input-group">
+                       <span class="input-group-addon">$</span>
+                       <input type="text" #electronicsCommodity class="form-control" id="spcc-electronics-commodity">
+                   </div>
+               </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="spcc-heavy-metals-commodity" class="col-xs-2">Heavy Metals</label>
+               <div class="col-xs-10">
+                   <div class="input-group">
+                       <span class="input-group-addon">$</span>
+                       <input type="text" #heavyMetalsCommodity class="form-control" id="spcc-heavy-metals-commodity">
+                   </div>
+               </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="spcc-luxury-goods-commodity" class="col-xs-2">Luxury Goods</label>
+               <div class="col-xs-10">
+                   <div class="input-group">
+                     <span class="input-group-addon">$</span>
+                     <input type="text" #luxuryGoodsCommodity class="form-control" id="spcc-luxury-goods-commodity">
+                   </div>
+               </div>
+           </div>
+
+        </form>
+   </div>
+</div>
