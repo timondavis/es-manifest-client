@@ -12,15 +12,7 @@
 
            <h3>Commodity Pricing</h3>
 
-           <div class="form-group row">
-               <label for="spcc-food-commodity" class="col-xs-2">Food</label>
-               <div class="col-xs-10">
-                   <div class="input-group">
-                       <span class="input-group-addon">$</span>
-                       <input type="text" #foodCommodity class="form-control" id="spcc-food-commodity">
-                   </div>
-               </div>
-           </div>
+           <spcc-pretty-input [name]="'spcc-food-commodity'" [label]="'Food'" [(ngModel)]="model.commodities[0]"></spcc-pretty-input>
 
            <div class="form-group row">
                <label for="spcc-clothing-commodity" class="col-xs-2">Clothing</label>

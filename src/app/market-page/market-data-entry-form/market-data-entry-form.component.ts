@@ -10,23 +10,10 @@ import { NgModel } from "@angular/forms";
 })
 export class MarketDataEntryFormComponent {
 
+
   public model =
     {
-      date        : '',
-      planet      : '',
-      region      : '',
-      commodities : [
-          { name : 'food', cost: '' },
-          { name : 'clothing', cost: '' },
-          { name : 'metal', cost: '' },
-          { name : 'plastic', cost: '' },
-          { name : 'equipment', cost: '' },
-          { name : 'medical', cost: '' },
-          { name : 'industrial', cost: '' },
-          { name : 'electronics', cost: '' },
-          { name : 'heavyMetals', cost: '' },
-          { name : 'luxuryGoods', cost: '' }
-          ]
+
     };
 
   constructor() { }
