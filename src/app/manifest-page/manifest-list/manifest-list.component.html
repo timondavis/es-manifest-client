@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Manifest</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date Received</th>
+                <th>Commodity</th>
+                <th>Price</th>
+                <th>Tonnage</th>
+                <th>Cargo Value</th>
+                <th>Expires On</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of manifestListItems" [manifestItem]="item" (click)="onItemClick(item)" spcc-manifest-list-item></tr>
+        </tbody>
+    </table>
+</div>

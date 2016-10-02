@@ -1,0 +1,9 @@
+<div class="form-group row">
+  <label [attr.for]="name" class="col-xs-4">{{label}}</label>
+  <div class="col-xs-8">
+    <div class="input-group">
+     <span *ngIf="leftInnerLabel != ''" class="input-group-addon">{{leftInnerLabel}}</span>
+     <input type="text" class="form-control" [id]="name" [name]="name" [(ngModel)]="value" (blur)="onBlur($event)">
+    </div>
+  </div>
+</div>
