@@ -1,109 +1,68 @@
 <div class="panel panel-default">
    <div class="panel-heading">Create Market Data Point</div>
 
-   <div class="panel-body">
-       <form (submit)="postItem()" role="form">
+ <div class="panel-body">
+   <form (submit)="postItem()" role="form">
+
+     <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-6">
 
            <h3>Graph Data</h3>
 
-           <spcc-pretty-input [name]="'spcc-landing-date'" [label]="'Landing Date'" [(ngModel)]="model.date"></spcc-pretty-input>
-           <spcc-pretty-input [name]="'spcc-landing-planet'" [label]="'Planet'" [(ngModel)]="model.planet"></spcc-pretty-input>
-           <spcc-pretty-input [name]="'spcc-planet-allegiance'" [label]="'Allegiance'" [(ngModel)]="model.region"></spcc-pretty-input>
+           <spcc-pretty-input [name]="'spcc-landing-date'" [label]="'Landing Date'"
+                              [(ngModel)]="model.date"></spcc-pretty-input>
+
+           <spcc-pretty-input [name]="'spcc-landing-planet'" [label]="'Planet'"
+                              [(ngModel)]="model.planet"></spcc-pretty-input>
+
+           <spcc-pretty-input [name]="'spcc-planet-allegiance'" [label]="'Allegiance'"
+                              [(ngModel)]="model.region"></spcc-pretty-input>
 
            <h3>Commodity Pricing</h3>
 
-           <spcc-pretty-input [name]="'spcc-food-commodity'" [label]="'Food'" [(ngModel)]="model.commodities[0]"></spcc-pretty-input>
+         </div>
+     </div>
 
-           <div class="form-group row">
-               <label for="spcc-clothing-commodity" class="col-xs-2">Clothing</label>
-               <div class="col-xs-10">
-                   <div class="input-group">
-                       <span class="input-group-addon">$</span>
-                       <input type="text" #clothingCommodity class="form-control" id="spcc-clothing-commodity">
-                   </div>
-               </div>
-           </div>
+     <div class="row">
+       <div class="col-xs-8 col-sm-5">
+         <spcc-pretty-input [leftInnerLabel]="'$'" [name]="'spcc-food-commodity'" [label]="'Food'"
+                            [(ngModel)]="model.getCommodity( 'food' ).cost"></spcc-pretty-input>
 
-           <div class="form-group row">
-               <label for="spcc-metal-commodity" class="col-xs-2">Metal</label>
-               <div class="col-xs-10">
-                   <div class="input-group">
-                       <span class="input-group-addon">$</span>
-                       <input type="text" #metalCommodity class="form-control" id="spcc-metal-commodity">
-                   </div>
-               </div>
-           </div>
+         <spcc-pretty-input [leftInnerLabel]="'$'" [name]="'spcc-clothing-commodity'" [label]="'Clothing'"
+                            [(ngModel)]="model.getCommodity( 'clothing' ).cost"></spcc-pretty-input>
 
-           <div class="form-group row">
-               <label for="spcc-plastic-commodity" class="col-xs-2">Plastic</label>
-               <div class="col-xs-10">
-                   <div class="input-group">
-                       <span class="input-group-addon">$</span>
-                       <input type="text" #plasticCommoodity class="form-control" id="spcc-plastic-commodity">
-                   </div>
-               </div>
-           </div>
+         <spcc-pretty-input [leftInnerLabel]="'$'" [name]="'spcc-metal-commodity'" [label]="'Metal'"
+                            [(ngModel)]="model.getCommodity( 'metal' ).cost"></spcc-pretty-input>
 
-           <div class="form-group row">
-               <label for="spcc-equipment-commodity" class="col-xs-2">Equipment</label>
-               <div class="col-xs-10">
-                   <div class="input-group">
-                       <span class="input-group-addon">$</span>
-                       <input type="text" #eqipmentCommodity class="form-control" id="spcc-equipment-commodity">
-                   </div>
-                </div>
-           </div>
+         <spcc-pretty-input [leftInnerLabel]="'$'" [name]="'spcc-plastic-commodity'" [label]="'Plastic'"
+                            [(ngModel)]="model.getCommodity( 'plastic' ).cost"></spcc-pretty-input>
 
-           <div class="form-group row">
-               <label for="spcc-medical-commodity" class="col-xs-2">Medical</label>
-               <div class="col-xs-10">
-                  <div class="input-group">
-                     <span class="input-group-addon">$</span>
-                     <input type="text" #medicalCommodity class="form-control" id="spcc-medical-commodity">
-                  </div>
-               </div>
-            </div>
+         <spcc-pretty-input [leftInnerLabel]="'$'" [name]="'spcc-equipment-commodity'" [label]="'Equipment'"
+                            [(ngModel)]="model.getCommodity( 'equipment' ).cost"></spcc-pretty-input>
 
-           <div class="form-group row">
-               <label for="spcc-industrial-commodity" class="col-xs-2">Industrial</label>
-               <div class="col-xs-10">
-                   <div class="input-group">
-                       <span class="input-group-addon">$</span>
-                       <input type="text" #industrialCommodity class="form-control" id="spcc-industrial-commodity">
-                   </div>
-                </div>
-           </div>
+         <spcc-pretty-input [leftInnerLabel]="'$'" [name]="'spcc-medical-commodity'" [label]="'Medical'"
+                            [(ngModel)]="model.getCommodity( 'medical' ).cost"></spcc-pretty-input>
 
-           <div class="form-group row">
-               <label for="spcc-electronics-commodity" class="col-xs-2">Electronics</label>
-               <div class="col-xs-10">
-                   <div class="input-group">
-                       <span class="input-group-addon">$</span>
-                       <input type="text" #electronicsCommodity class="form-control" id="spcc-electronics-commodity">
-                   </div>
-               </div>
-           </div>
+         <spcc-pretty-input [leftInnerLabel]="'$'" [name]="'spcc-industrial-commodity'" [label]="'Industrial'"
+                            [(ngModel)]="model.getCommodity( 'industrial' ).cost"></spcc-pretty-input>
 
-           <div class="form-group row">
-               <label for="spcc-heavy-metals-commodity" class="col-xs-2">Heavy Metals</label>
-               <div class="col-xs-10">
-                   <div class="input-group">
-                       <span class="input-group-addon">$</span>
-                       <input type="text" #heavyMetalsCommodity class="form-control" id="spcc-heavy-metals-commodity">
-                   </div>
-               </div>
-           </div>
+         <spcc-pretty-input [leftInnerLabel]="'$'" [name]="'spcc-electronics-commodity'" [label]="'Electronics'"
+                            [(ngModel)]="model.getCommodity( 'electronics' ).cost"></spcc-pretty-input>
 
-           <div class="form-group row">
-               <label for="spcc-luxury-goods-commodity" class="col-xs-2">Luxury Goods</label>
-               <div class="col-xs-10">
-                   <div class="input-group">
-                     <span class="input-group-addon">$</span>
-                     <input type="text" #luxuryGoodsCommodity class="form-control" id="spcc-luxury-goods-commodity">
-                   </div>
-               </div>
-           </div>
+         <spcc-pretty-input [leftInnerLabel]="'$'" [name]="'spcc-heavy-metals-commodity'" [label]="'Heavy Metals'"
+                            [(ngModel)]="model.getCommodity( 'heavyMetals' ).cost"></spcc-pretty-input>
 
-        </form>
-   </div>
+         <spcc-pretty-input [leftInnerLabel]="'$'" [name]="'spcc-luxury-goods-commodity'" [label]="'Luxury Goods'"
+                            [(ngModel)]="model.getCommodity( 'luxuryGoods' ).cost"></spcc-pretty-input>
+
+        </div>
+
+      </div>
+
+     <hr>
+
+     <button type="submit" class="btn btn-primary">Submit</button>
+
+   </form>
+ </div>
 </div>

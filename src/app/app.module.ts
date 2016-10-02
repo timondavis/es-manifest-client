@@ -22,7 +22,6 @@ import { routing } from './app.routing';
 import { MarketPageComponent } from './market-page/market-page.component';
 import { MarketDataEntryFormComponent } from './market-page/market-data-entry-form/market-data-entry-form.component';
 import { PrettyInputComponent } from './shared/pretty-input/pretty-input.component';
-import { PrettyMoneyInputComponent } from './shared/pretty-money-input/pretty-money-input.component';
 
 import { MarketDataService } from './market-page/market-data.service';
 
@@ -42,7 +41,6 @@ import { MarketDataService } from './market-page/market-data.service';
     MarketPageComponent,
     MarketDataEntryFormComponent,
     PrettyInputComponent,
-    PrettyMoneyInputComponent
   ],
   imports: [
     BrowserModule,

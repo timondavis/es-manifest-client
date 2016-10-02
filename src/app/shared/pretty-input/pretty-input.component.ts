@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, Input, forwardRef, AfterViewInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { NgModel } from '@angular/forms';
 
@@ -16,17 +16,29 @@ export const PRETTY_INPUT_COMPONENT_VALUE_ACCESSOR : any = {
   styleUrls: ['./pretty-input.component.css'],
   providers: [PRETTY_INPUT_COMPONENT_VALUE_ACCESSOR]
 })
-export class PrettyInputComponent implements ControlValueAccessor {
+export class PrettyInputComponent implements ControlValueAccessor, AfterViewInit {
 
   @Input() label : string;
   @Input() name : string;
+  @Input() classes : any = {};
+  @Input() leftInnerLabel : string = '';
 
   private innerValue: any = '';
+  private defaultClasses = [ 'form-group', 'row' ];
 
   private onTouchedCallback: () => void = noop;
   private onChangedCallback: ( _ : any ) => void = noop;
 
   constructor() { }
+
+  ngAfterViewInit() {
+
+    // Pply default classes
+    for( let i = 0 ; i < this.defaultClasses.length ; i++ ) {
+
+      this.classes[this.defaultClasses[i]] = true;
+    }
+  }
 
   get value() : any {
 

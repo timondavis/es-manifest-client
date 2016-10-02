@@ -35,19 +35,5 @@ export class MarketDataEntryFormComponent {
         { _id : '10', 'name': 'luxuryGoods',  'cost': 1228 }
       ]
     });
-
-    /*this.model.commodities = [
-      new Commodity( 'food', 0 ),
-      new Commodity( 'clothing', 0 ),
-      new Commodity( 'metal', 0 ),
-      new Commodity( 'plastic', 0 ),
-      new Commodity( 'equipement', 0 ),
-      new Commodity( 'medical', 0 ),
-      new Commodity( 'industrial', 0 ),
-      new Commodity( 'electronics', 0 ),
-      new Commodity( 'heavyMetals', 0 ),
-      new Commodity( 'luxuryGoods', 0 )
-    ];*/
-
   }
 }
