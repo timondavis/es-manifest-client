@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { ViewChild } from "@angular/core/src/metadata/di";
-import { PrettyInputComponent } from "../../shared/pretty-input/pretty-input.component";
-import { NgModel } from "@angular/forms";
+import { MarketDataPoint } from '../market-data-point';
+import { MarketDataService } from "../market-data.service";
 
 @Component({
   selector: 'spcc-market-data-entry-form',
@@ -10,24 +9,42 @@ import { NgModel } from "@angular/forms";
 })
 export class MarketDataEntryFormComponent {
 
-  public model =
-    {
-      date        : '',
-      planet      : '',
-      region      : '',
-      commodities : [
-          { name : 'food', cost: '' },
-          { name : 'clothing', cost: '' },
-          { name : 'metal', cost: '' },
-          { name : 'plastic', cost: '' },
-          { name : 'equipment', cost: '' },
-          { name : 'medical', cost: '' },
-          { name : 'industrial', cost: '' },
-          { name : 'electronics', cost: '' },
-          { name : 'heavyMetals', cost: '' },
-          { name : 'luxuryGoods', cost: '' }
-          ]
-    };
+  public model : MarketDataPoint;
 
-  constructor() { }
+  constructor(private marketDataService : MarketDataService ) {
+
+      this.clear();
+  }
+
+  public postItem( event ) {
+
+    event.preventDefault();
+
+    this.marketDataService.pushItem( this.model ).subscribe(
+        (res) => this.clear(),
+        (err) => console.log( err )
+    );
+  }
+
+  public clear() {
+
+    this.model = new MarketDataPoint();
+    this.model.hydrateFromDocument({
+      'date': '',
+      'planet': '',
+      'region': '',
+      'commodities': [
+        { 'name': 'food',         'cost': '' },
+        { 'name': 'clothing',     'cost': '' },
+        { 'name': 'metal',        'cost': '' },
+        { 'name': 'equipment',    'cost': '' },
+        { 'name': 'plastic',      'cost': '' },
+        { 'name': 'medical',      'cost': '' },
+        { 'name': 'industrial',   'cost': '' },
+        { 'name': 'electronics',  'cost': '' },
+        { 'name': 'heavyMetals',  'cost': '' },
+        { 'name': 'luxuryGoods',  'cost': '' }
+      ]
+    });
+  }
 }
