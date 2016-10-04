@@ -134,6 +134,8 @@ export class MarketDataService {
   private handleGetItems( response ) {
 
     let responseObject = JSON.parse( response._body );
+    this.itemsCollected.emit( responseObject );
+
     return this.hydrateCollection( responseObject );
   }
 
