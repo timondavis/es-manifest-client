@@ -4,18 +4,22 @@ export class Commodity {
   public name : string;
   public cost : number;
 
-  constructor() {}
+  constructor( args : any ) {
 
-  hydrate( _id : string, name : string, cost : number ) {
+    try {
+      this._id = args._id;
+      this.name = args.name;
+      this.cost = args.cost;
+    }
+    catch ( e ) {
 
-    this._id   = _id;
-    this.name = name;
-    this.cost = cost;
+      throw e;
+    }
   }
 
   hydrateFromDocument( src : any ) {
 
-    this.constructor( src._id, src.name, src.cost );
+    this.constructor({ '_id': src._id, 'name': src.name, 'cost': src.cost });
   }
 
 

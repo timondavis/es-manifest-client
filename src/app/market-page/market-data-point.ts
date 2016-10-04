@@ -11,24 +11,18 @@ export class MarketDataPoint {
   /**
    * Default constructor
    */
-  constructor() { }
+  constructor( args : any ) {
+    try {
 
-  /**
-   * Convenience constructor.  All data members required.
-   *
-   * @param _id {string}
-   * @param date {string}
-   * @param planet {string}
-   * @param region {string}
-   * @param commodities {Commodity[]}
-   */
-  public hydrate( _id : string, date : string, planet : string, region : string, commodities : Commodity[] = [] ) {
-
-    this._id          = _id;
-    this.date         = date;
-    this.planet       = planet;
-    this.region       = region;
-    this.commodities  = commodities;
+      this._id          = args._id;
+      this.date         = args.date;
+      this.planet       = args.planet;
+      this.region       = args.region;
+      this.loadCommoditiesFromDocument( args.commodities );
+    }
+    catch( e ) {
+      throw e;
+    }
   }
 
   /**
@@ -37,8 +31,7 @@ export class MarketDataPoint {
    */
   public hydrateFromDocument( src : any ) {
 
-    this.hydrate( src._id, src.date, src.planet, src.region );
-    this.loadCommoditiesFromDocument( src.commodities );
+    this.constructor({ '_id': src._id, 'date': src.date, 'planet': src.planet, 'region': src.region, 'commodities': src.commodities });
   }
 
 
@@ -92,7 +85,7 @@ export class MarketDataPoint {
    * @param name {string}
    * @param cost
    */
-  public updateCost( name : string, cost : number ) {
+  public setCost( name : string, cost : number ) {
 
     let c = this.getCommodity( name );
 
@@ -121,8 +114,7 @@ export class MarketDataPoint {
 
     for( var i = 0 ; i < commodities.length ; i++ ) {
 
-      let c = new Commodity();
-      c.hydrate(commodities[i]._id, commodities[i].name, commodities[i].cost);
+      let c = new Commodity({ '_id': commodities[i]._id, 'name': commodities[i].name, 'cost': commodities[i].cost});
 
       this.add( c );
     }
