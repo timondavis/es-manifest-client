@@ -26,6 +26,18 @@ export class MarketDataEntryFormComponent {
     );
   }
 
+  /**
+   * Prevent the enter key from submitting the form
+   * @param event
+   */
+  public handleKeydown( event ) {
+
+    if ( event.which === 13 ) {
+
+      event.preventDefault();
+    }
+  }
+
   public clear() {
 
     this.model = new MarketDataPoint({
