@@ -2,6 +2,11 @@
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.14.
 
+# V0.0.4
+* Market Report Component now reloads whenever a new market data is pushed to the server.
+* Improved formatting on the Market Report
+* Preventing [Enter] key from submitting market reports (submit button must be clicked)
+
 # v0.0.3
 * Created new components, service for reporting on the market, displaying averages and other stats
 

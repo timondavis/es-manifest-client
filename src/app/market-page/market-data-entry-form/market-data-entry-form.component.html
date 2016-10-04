@@ -2,7 +2,7 @@
    <div class="panel-heading">Create Market Data Point</div>
 
  <div class="panel-body">
-   <form (submit)="postItem($event)" role="form">
+   <form (submit)="postItem($event)" (keydown)="handleKeydown($event)" role="form">
 
      <div class="row">
          <div class="col-xs-12">
