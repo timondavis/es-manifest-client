@@ -24,6 +24,7 @@ import { MarketDataEntryFormComponent } from './market-page/market-data-entry-fo
 import { PrettyInputComponent } from './shared/pretty-input/pretty-input.component';
 
 import { MarketDataService } from './market-page/market-data.service';
+import { MarketReportComponent } from './market-page/market-report/market-report.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { MarketDataService } from './market-page/market-data.service';
     MarketPageComponent,
     MarketDataEntryFormComponent,
     PrettyInputComponent,
+    MarketReportComponent,
   ],
   imports: [
     BrowserModule,

@@ -28,8 +28,7 @@ export class MarketDataEntryFormComponent {
 
   public clear() {
 
-    this.model = new MarketDataPoint();
-    this.model.hydrateFromDocument({
+    this.model = new MarketDataPoint({
       'date': '',
       'planet': '',
       'region': '',

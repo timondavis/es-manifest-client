@@ -5,7 +5,7 @@
    <form (submit)="postItem($event)" role="form">
 
      <div class="row">
-       <div class="col-xs-12 col-sm-12 col-md-6">
+         <div class="col-xs-12">
 
            <h3>Graph Data</h3>
 
@@ -24,7 +24,7 @@
      </div>
 
      <div class="row">
-       <div class="col-xs-8 col-sm-5">
+       <div class="col-xs-12">
          <spcc-pretty-input [leftInnerLabel]="'$'" [name]="'spcc-food-commodity'" [label]="'Food'"
                             [(ngModel)]="model.getCommodity( 'food' ).cost"></spcc-pretty-input>
 
