@@ -19,9 +19,18 @@ export class MarketReportComponent implements OnInit {
   ngOnInit() {
 
     this.marketDataService.getItems().subscribe(
-        ( collection : MarketDataPoint[] ) => this.updateReport( collection ),
-        ( err ) => console.log( err )
+      ( collection : MarketDataPoint[] ) => this.updateReport( collection ),
+      ( err ) => console.log( err )
     );
+
+    this.marketDataService.itemPosted.subscribe(
+     ( res )  => this.marketDataService.getItems().subscribe(
+       ( collection : MarketDataPoint[] ) => this.updateReport( collection ),
+       ( err ) => console.log( err )
+     ),
+     ( err ) => console.log( err )
+    );
+
   }
 
   public updateReport( collection : MarketDataPoint[] ) : void {
