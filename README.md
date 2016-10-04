@@ -2,6 +2,9 @@
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.14.
 
+# v0.0.3
+* Created new components, service for reporting on the market, displaying averages and other stats
+
 # v0.0.2
 
 * Fixed bug causing fields to appear inconsistently in the pretty-input component
