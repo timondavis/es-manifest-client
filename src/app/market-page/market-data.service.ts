@@ -21,6 +21,19 @@ export class MarketDataService {
       .catch( ( err ) => Observable.throw( err ) );
   }
 
+  queryItems( queryObject : {} ) : Observable<MarketDataPoint[]> {
+
+    let qString = '';
+
+    for ( var propertyName in queryObject ) {
+      qString += '?' + propertyName + '=' + queryObject[propertyName];
+    }
+
+    return this.http.get( this.itemURL + qString )
+        .map( ( res : Response ) => this.handleGetItems ( response ) )
+        .catch( ( err ) => Observable.throw( err ) );
+  }
+
   pushItem( item : MarketDataPoint ) : Observable<MarketDataPoint[]> {
 
     let body = JSON.stringify( item );
