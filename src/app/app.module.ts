@@ -25,6 +25,8 @@ import { PrettyInputComponent } from './shared/pretty-input/pretty-input.compone
 
 import { MarketDataService } from './market-page/market-data.service';
 import { MarketReportComponent } from './market-page/market-report/market-report.component';
+import { MarketReportService } from './market-page/market-report.service.ts';
+import { MarketSpeculationComponent } from './market-page/market-speculation/market-speculation.component';
 
 
 @NgModule({
@@ -43,6 +45,7 @@ import { MarketReportComponent } from './market-page/market-report/market-report
     MarketDataEntryFormComponent,
     PrettyInputComponent,
     MarketReportComponent,
+    MarketSpeculationComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { MarketReportComponent } from './market-page/market-report/market-report
     HttpModule,
     routing
   ],
-  providers: [ ManifestDataService, TransactionCalculatorService, MarketDataService ],
+  providers: [ ManifestDataService, TransactionCalculatorService, MarketDataService, MarketReportService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
