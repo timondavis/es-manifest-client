@@ -46,11 +46,8 @@ import { MarketSpeculationComponent } from './market-page/market-speculation/mar
     MarketDataEntryFormComponent,
     PrettyInputComponent,
     MarketReportComponent,
-<<<<<<< HEAD
     MarketHistoryComponent,
-=======
     MarketSpeculationComponent,
->>>>>>> staging
   ],
   imports: [
     BrowserModule,
