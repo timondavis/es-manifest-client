@@ -26,11 +26,14 @@ export class MarketDataService {
     let qString = '';
 
     for ( var propertyName in queryObject ) {
-      qString += '?' + propertyName + '=' + queryObject[propertyName];
+
+      if ( queryObject.hasOwnProperty( propertyName ) ) {
+        qString += '?' + propertyName + '=' + queryObject[ propertyName ];
+      }
     }
 
     return this.http.get( this.itemURL + qString )
-        .map( ( res : Response ) => this.handleGetItems ( response ) )
+        .map( ( res : Response ) => this.handleGetItems ( res ) )
         .catch( ( err ) => Observable.throw( err ) );
   }
 
@@ -140,9 +143,6 @@ export class MarketDataService {
 
     return val;
   }
-
-
-
 
   private handleGetItems( response ) {
 

@@ -28,6 +28,7 @@ import { MarketReportComponent } from './market-page/market-report/market-report
 import { MarketHistoryComponent } from './market-page/market-history/market-history.component';
 import { MarketReportService } from './market-page/market-report.service.ts';
 import { MarketSpeculationComponent } from './market-page/market-speculation/market-speculation.component';
+import { MarketHistoryItemComponent } from './market-page/market-history/market-history-item.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { MarketSpeculationComponent } from './market-page/market-speculation/mar
     MarketReportComponent,
     MarketHistoryComponent,
     MarketSpeculationComponent,
+    MarketHistoryItemComponent,
   ],
   imports: [
     BrowserModule,

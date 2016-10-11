@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MarketDataService } from "../market-data.service";
+import { Response } from "@angular/http";
+import { MarketDataPoint } from "../market-data-point";
 
 @Component({
   selector: 'spcc-market-history',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarketHistoryComponent implements OnInit {
 
-  constructor() { }
+  private dataPoints : MarketDataPoint[];
+
+  constructor( private marketDataService : MarketDataService ) { }
 
   ngOnInit() {
-  }
 
+    this.marketDataService.itemPosted.subscribe(
+        ( dataPoints : MarketDataPoint[] ) => this.dataPoints = dataPoints,
+        ( err ) => console.log( err )
+    );
+
+    this.marketDataService.getItems().subscribe(
+        ( dataPoints : MarketDataPoint[] ) => this.dataPoints = dataPoints,
+        ( err ) => console.log( err )
+    );
+  }
 }

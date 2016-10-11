@@ -1,3 +1,25 @@
-<p>
-  market-history works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">Manifest</div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Planet</th>
+      <th>Date</th>
+      <th>Region</th>
+      <th>Food</th>
+      <th>Clothing</th>
+      <th>Metal</th>
+      <th>Plastic</th>
+      <th>Equipment</th>
+      <th>Industrial</th>
+      <th>Medical</th>
+      <th>Electronics</th>
+      <th>Heavy Metal</th>
+      <th>Luxury Goods</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let dataPoint of dataPoints" [dataPoint]="dataPoint" spcc-market-history-item></tr>
+    </tbody>
+  </table>
+</div>
