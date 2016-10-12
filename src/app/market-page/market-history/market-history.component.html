@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Market History</div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th [ngClass]="{highlight: query.sort == 'planet', sortable : true }" (click)="sortBy( 'planet' )">Planet</th>
+      <th [ngClass]="{highlight: query.sort == 'date', sortable : true }" (click)="sortBy( 'date' )">Date</th>
+      <th [ngClass]="{highlight: query.sort == 'region', sortable: true }" (click)="sortBy( 'region' )">Region</th>
+      <th>Food</th>
+      <th>Clothing</th>
+      <th>Metal</th>
+      <th>Plastic</th>
+      <th>Equipment</th>
+      <th>Industrial</th>
+      <th>Medical</th>
+      <th>Electronics</th>
+      <th>Heavy Metals</th>
+      <th>Luxury Goods</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><div class="form-group"><input class="form-control" (keyup)="setFilter( 'planet', $event )" type="text">
+      </div></td>
+      <td><div class="form-group"><input class="form-control" (keyup)="setFilter( 'planet', $event )" type="text">
+      </div></td>
+      <td><div class="form-group"><input class="form-control" (keyup)="setFilter( 'planet', $event )" type="text">
+      </div></td>
+    </tr>
+    <tr *ngFor="let dataPoint of dataPoints" [dataPoint]="dataPoint" spcc-market-history-item></tr>
+    </tbody>
+  </table>
+</div>

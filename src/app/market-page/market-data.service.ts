@@ -9,16 +9,52 @@ export class MarketDataService {
 
   @Output() itemPosted : EventEmitter<string> = new EventEmitter<string>();
   @Output() itemsCollected : EventEmitter<MarketDataPoint[]> = new EventEmitter<MarketDataPoint[]>();
+  @Output() itemsDeleted : EventEmitter<string> = new EventEmitter<string>();
 
   private itemURL = 'http://localhost:3000/market/data';
 
-  constructor( private http : Http) { }
+  constructor( private http : Http ) { }
 
   getItems() : Observable<MarketDataPoint[]> {
 
     return this.http.get( this.itemURL )
       .map( ( res : Response ) => this.handleGetItems( res ) )
       .catch( ( err ) => Observable.throw( err ) );
+  }
+
+  deleteItem( item : MarketDataPoint ) : Observable<Object> {
+
+    let url = this.itemURL + '/' + item._id;
+
+    return this.http.delete( url )
+        .map( ( res : Response ) => this.handleDeleteItem( res ) )
+        .catch( ( error: any ) => Observable.throw( error || 'Server Error ' ) );
+  }
+
+  private handleDeleteItem( response ) {
+
+    let adjustedResponse = response.json();
+    this.itemsDeleted.emit( adjustedResponse );
+    return adjustedResponse;
+  }
+
+  queryItems( queryObject : {} ) : Observable<MarketDataPoint[]> {
+
+    let qString = '?';
+
+    for ( var propertyName in queryObject ) {
+
+      if ( queryObject.hasOwnProperty( propertyName ) ) {
+        qString += propertyName + '=' + queryObject[ propertyName ] + '&';
+      }
+    }
+
+    // Lob off the last ampersand
+    qString = qString.substr( 0, qString.length - 1);
+
+    return this.http.get( this.itemURL + qString )
+        .map( ( res : Response ) => this.handleGetItems ( res ) )
+        .catch( ( err ) => Observable.throw( err ) );
   }
 
   pushItem( item : MarketDataPoint ) : Observable<MarketDataPoint[]> {
@@ -127,9 +163,6 @@ export class MarketDataService {
 
     return val;
   }
-
-
-
 
   private handleGetItems( response ) {
 

@@ -25,8 +25,10 @@ import { PrettyInputComponent } from './shared/pretty-input/pretty-input.compone
 
 import { MarketDataService } from './market-page/market-data.service';
 import { MarketReportComponent } from './market-page/market-report/market-report.component';
+import { MarketHistoryComponent } from './market-page/market-history/market-history.component';
 import { MarketReportService } from './market-page/market-report.service.ts';
 import { MarketSpeculationComponent } from './market-page/market-speculation/market-speculation.component';
+import { MarketHistoryItemComponent } from './market-page/market-history/market-history-item.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { MarketSpeculationComponent } from './market-page/market-speculation/mar
     MarketDataEntryFormComponent,
     PrettyInputComponent,
     MarketReportComponent,
+    MarketHistoryComponent,
     MarketSpeculationComponent,
+    MarketHistoryItemComponent,
   ],
   imports: [
     BrowserModule,
