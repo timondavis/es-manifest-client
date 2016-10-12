@@ -77,7 +77,7 @@ export class MarketDataPoint {
     let c = this.getCommodity( name );
 
     if ( c ) { return c.cost; }
-    return false;
+    return 0;
   }
 
   /**
