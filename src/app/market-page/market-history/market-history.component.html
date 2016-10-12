@@ -23,9 +23,9 @@
     <tr>
       <td><div class="form-group"><input class="form-control" (keyup)="setFilter( 'planet', $event )" type="text">
       </div></td>
-      <td><div class="form-group"><input class="form-control" (keyup)="setFilter( 'planet', $event )" type="text">
+      <td><div class="form-group"><input class="form-control" (keyup)="setFilter( 'date', $event )" type="text">
       </div></td>
-      <td><div class="form-group"><input class="form-control" (keyup)="setFilter( 'planet', $event )" type="text">
+      <td><div class="form-group"><input class="form-control" (keyup)="setFilter( 'region', $event )" type="text">
       </div></td>
     </tr>
     <tr *ngFor="let dataPoint of dataPoints" [dataPoint]="dataPoint" spcc-market-history-item></tr>
