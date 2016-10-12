@@ -40,14 +40,17 @@ export class MarketDataService {
 
   queryItems( queryObject : {} ) : Observable<MarketDataPoint[]> {
 
-    let qString = '';
+    let qString = '?';
 
     for ( var propertyName in queryObject ) {
 
       if ( queryObject.hasOwnProperty( propertyName ) ) {
-        qString += '?' + propertyName + '=' + queryObject[ propertyName ];
+        qString += propertyName + '=' + queryObject[ propertyName ] + '&';
       }
     }
+
+    // Lob off the last ampersand
+    qString = qString.substr( 0, qString.length - 1);
 
     return this.http.get( this.itemURL + qString )
         .map( ( res : Response ) => this.handleGetItems ( res ) )

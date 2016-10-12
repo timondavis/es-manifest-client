@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MarketDataService } from "../market-data.service";
-import { Response } from "@angular/http";
 import { MarketDataPoint } from "../market-data-point";
 
 @Component({
@@ -12,7 +11,15 @@ export class MarketHistoryComponent implements OnInit {
 
   private dataPoints : MarketDataPoint[];
 
-  constructor( private marketDataService : MarketDataService ) { }
+  private query : any;
+
+  constructor( private marketDataService : MarketDataService ) {
+
+    this.query = {
+      'sort' : 'date',
+      'order' : 1
+    }
+  }
 
   ngOnInit() {
 
@@ -31,9 +38,30 @@ export class MarketHistoryComponent implements OnInit {
 
   private loadDataPoints() : void {
 
-    this.marketDataService.getItems().subscribe(
+    this.marketDataService.queryItems( this.query ).subscribe(
         ( dataPoints : MarketDataPoint[] ) => this.dataPoints = dataPoints,
         ( err ) => console.log( err )
     );
   }
+
+  private sortBy( fieldName : string ) : void {
+
+    if ( this.query.sort == fieldName ) {
+      this.query.order = this.query.order * -1;
+    } else {
+      this.query.sort = fieldName;
+      this.query.order = 1;
+    }
+
+    this.loadDataPoints();
+  }
+
+  private setFilter( fieldName, event ) {
+
+    this.query[fieldName] = event.target.value;
+    this.loadDataPoints();
+
+    console.log( this.query );
+  }
+
 }
