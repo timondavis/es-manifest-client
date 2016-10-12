@@ -1,0 +1,14 @@
+<td>{{ dataPoint.planet }}</td>
+<td>{{ dataPoint.date }}</td>
+<td>{{ dataPoint.region }}</td>
+<td>${{ dataPoint.getCost( 'food' ) }}</td>
+<td>${{ dataPoint.getCost( 'clothing' ) }}</td>
+<td>${{ dataPoint.getCost( 'metal' ) }}</td>
+<td>${{ dataPoint.getCost( 'plastic' ) }}</td>
+<td>${{ dataPoint.getCost( 'equipment' ) }}</td>
+<td>${{ dataPoint.getCost( 'industrial' ) }}</td>
+<td>${{ dataPoint.getCost( 'medical' ) }}</td>
+<td>${{ dataPoint.getCost( 'electronics' ) }}</td>
+<td>${{ dataPoint.getCost( 'heavyMetals' ) }}</td>
+<td>${{ dataPoint.getCost( 'luxuryGoods' ) }}</td>
+<td><span spcc-delete-button aria-hidden="true" (delete)="handleDeleted($event)" ></span></td>

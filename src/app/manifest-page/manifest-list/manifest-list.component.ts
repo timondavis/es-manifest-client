@@ -45,9 +45,4 @@ export class ManifestListComponent implements OnInit {
         err => console.log( err )
     );
   }
-
-
-
-
-
 }
