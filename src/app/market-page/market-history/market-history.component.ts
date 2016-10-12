@@ -16,10 +16,20 @@ export class MarketHistoryComponent implements OnInit {
 
   ngOnInit() {
 
+    this.loadDataPoints();
+
     this.marketDataService.itemPosted.subscribe(
-        ( dataPoints : MarketDataPoint[] ) => this.dataPoints = dataPoints,
-        ( err ) => console.log( err )
+      ( x ) => this.loadDataPoints(),
+      ( err ) => console.log( err )
     );
+
+    this.marketDataService.itemsDeleted.subscribe(
+      ( x ) => this.loadDataPoints(),
+      ( err ) => console.log( err )
+    );
+  }
+
+  private loadDataPoints() : void {
 
     this.marketDataService.getItems().subscribe(
         ( dataPoints : MarketDataPoint[] ) => this.dataPoints = dataPoints,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MarketDataPoint } from "../market-data-point";
 import { Input } from "@angular/core/src/metadata/directives";
+import { MarketDataService } from "../market-data.service";
 
 @Component({
   selector: '[spcc-market-history-item]',
@@ -11,14 +12,17 @@ export class MarketHistoryItemComponent implements OnInit {
 
   @Input() dataPoint : MarketDataPoint;
 
-  constructor() { }
+  constructor( private marketDataService : MarketDataService ) { }
 
   ngOnInit() {
   }
 
-  public handleDeleted( dataPoint : MarketDataPoint ) : void {
+  public handleDeleted( event ) {
 
-      // Delete
+    this.marketDataService.deleteItem( this.dataPoint ).subscribe(
+        ( data ) => data,
+        ( err ) => console.log( err )
+    );
   }
 
 }
